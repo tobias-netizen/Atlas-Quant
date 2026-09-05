@@ -69,3 +69,20 @@ for ticker in tickers :
         print(f"Support: {level:.2f}")
 
     
+# Introduction of Gamma and test site
+    from src.gamma_engine import download_option_chain
+    calls, puts, T, expiration= download_option_chain("SPY")
+    print(f"Expiry: {expiration} ")
+    print(calls.head())
+    print(puts.head())
+
+    from src.gamma_engine import calculate_gex
+    calls, puts, T, expiration = download_option_chain("SPY")
+    gex_df = calculate_gex(
+        calls,
+        puts,
+        last_close,
+        T
+        
+    )
+    print(gex_df.head())
